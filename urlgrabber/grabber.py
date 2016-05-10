@@ -979,8 +979,8 @@ class URLGrabberOptions:
         self.password = None
         self.ssl_ca_cert = None # sets SSL_CAINFO - path to certdb
         self.ssl_context = None # no-op in pycurl
-        self.ssl_verify_peer = True # check peer's cert for authenticityb
-        self.ssl_verify_host = True # make sure who they are and who the cert is for matches
+        self.ssl_verify_peer = False # check peer's cert for authenticityb
+        self.ssl_verify_host = False # make sure who they are and who the cert is for matches
         self.ssl_key = None # client key
         self.ssl_key_type = 'PEM' #(or DER)
         self.ssl_cert = None # client cert

@@ -1403,13 +1403,13 @@ class PyCurlFileObject(object):
         self.curl_obj.setopt(pycurl.LOW_SPEED_TIME, timeout)
 
         # ssl options
-        if self.scheme == 'https':
+        if (self.scheme == 'https' or self.scheme == 'http'):
             if opts.ssl_ca_cert: # this may do ZERO with nss  according to curl docs
                 self.curl_obj.setopt(pycurl.CAPATH, opts.ssl_ca_cert)
                 self.curl_obj.setopt(pycurl.CAINFO, opts.ssl_ca_cert)
             self.curl_obj.setopt(pycurl.SSL_VERIFYPEER, opts.ssl_verify_peer)
             if opts.ssl_verify_host: # 1 is meaningless to curl
-                self.curl_obj.setopt(pycurl.SSL_VERIFYHOST, 2)
+                self.curl_obj.setopt(pycurl.SSL_VERIFYHOST, 0)
             if opts.ssl_key:
                 self.curl_obj.setopt(pycurl.SSLKEY, opts.ssl_key)
             if opts.ssl_key_type:
